@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer base {
+  /* Body Styling */
+  body {
+    @apply text-gray-700 bg-[#FAF8FF] dark:bg-[#1a1625];
+  }
+}
+
+@layer components {
+  /* Color */
+  .color-primary {
+    @apply text-[#674aeb];
+  }
+
+  /* Button Styling */
+  .btn-primary {
+    @apply bg-[#674aeb] hover:bg-purple-700 ml-4 px-7 py-3 rounded-md font-medium text-sm text-white;
+  }
+  .btn-text {
+    @apply ml-2 px-3 py-2 font-semibold hover:underline;
+  }
+
+  /* Header Icon */
+  .header-icon {
+    @apply dark:text-[#674aeb] transition-none duration-500 hover:scale-110 ml-2 p-2 focus:ring-offset-2 text-gray-700;
+  }
+}
+
+@layer utilities {
+}
+
+
