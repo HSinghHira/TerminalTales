@@ -1,22 +1,24 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from "react";
+// Routes.jsx
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
 import Contact from "../Pages/Contact";
 import NoPage from "../Pages/NoPage";
-import Post from "../Pages/Post";
+import ArticlesIndex from "../Components/ArticlesIndex";
+import BlogPostPage from "../Components/BlogPostPage";
 
-const RoutesIndex = () => {
+function AppRoutes() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="post" element={<Post />} />
-        <Route path="*" element={<NoPage />} />
+        <Route path="/" element={<Home />}>
+          <Route index element={<ArticlesIndex />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+          <Route path="post/:title" element={<BlogPostPage />} />
+        </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
-};
+}
 
-export default RoutesIndex;
+export default AppRoutes;

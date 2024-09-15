@@ -1,9 +1,10 @@
 import React from "react";
-import ArticleCard from "./ArticleCard";
-import { useSearchBox } from "../Hooks/SearchBoxHook";
+import { Link } from "react-router-dom";
+import ArticleCard from "../Components/ArticleCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useArticlesIndex } from "../Hooks/Hook";
 
-const ArticlesIndex = () => {
+const Articles = () => {
   const {
     searchResults,
     loading,
@@ -11,24 +12,27 @@ const ArticlesIndex = () => {
     totalPages,
     goToNextPage,
     goToPreviousPage,
-  } = useSearchBox();
+    createUrlFriendlyTitle,
+  } = useArticlesIndex();
+
   return (
     <>
       {loading ? (
         <p>Loading...</p>
       ) : searchResults.length > 0 ? (
         searchResults.map((post, index) => (
-          <ArticleCard
-            key={index}
-            title={post.title}
-            snippet={post.content.substring(0, 150) + "..."}
-            image={post.image}
-            author={post.author}
-            authorImage={post.authorImage}
-            date={post.date}
-            readTime={post.readTime}
-            categories={post.categories}
-          />
+          <Link to={`/post/${createUrlFriendlyTitle(post.title)}`} key={index}>
+            <ArticleCard
+              title={post.title}
+              snippet={post.content.substring(0, 150) + "..."}
+              image={post.image}
+              author={post.author}
+              authorImage={post.authorImage}
+              date={post.date}
+              readTime={post.readTime}
+              categories={post.categories}
+            />
+          </Link>
         ))
       ) : (
         <p>No articles found.</p>
@@ -67,4 +71,4 @@ const ArticlesIndex = () => {
   );
 };
 
-export default ArticlesIndex;
+export default Articles;

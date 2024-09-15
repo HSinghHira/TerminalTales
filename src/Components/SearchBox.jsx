@@ -1,7 +1,7 @@
 // SearchBox.jsx
 import React from "react";
 import { Search, Command } from "lucide-react";
-import { useSearchBox } from "../Hooks/SearchBoxHook";
+import { useSearchBox } from "../Hooks/Hook";
 
 const SearchBox = () => {
   const {
