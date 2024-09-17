@@ -10,7 +10,7 @@ const Header = () => {
   const { isDark, toggle } = useDarkMode();
   return (
     <>
-      <header className="flex justify-between items-center bg-white shadow-sm px-6 py-6 rounded-full w-full max-w-4xl">
+      <header className="flex justify-between items-center bg-white dark:bg-[#2d2d30] shadow-sm px-6 py-6 rounded-full w-full max-w-4xl">
         <div className="flex items-center ml-4">
           <div className="logo">
             <a href="/">

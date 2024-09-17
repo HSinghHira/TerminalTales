@@ -1,4 +1,4 @@
-import { useSearchBox } from "../Hooks/SearchBoxHook";
+import { useSearchBox } from "./Hook";
 
 export const useArticlesIndex = () => {
   const {

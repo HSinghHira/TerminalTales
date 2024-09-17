@@ -1,7 +1,8 @@
-// BlogPostPageHook.js
+// useBlogPost
 import { useState, useEffect } from "react";
 import $ from "jquery";
-import { formatDate, applyStylesToContent } from "./utils";
+import { formatDate } from "./Hook";
+import { applyStylesToContent } from "./applyStylesToContent";
 
 const BLOGGER_API_URL =
   "https://www.blogger.com/feeds/6428958383452564318/posts/default/-/Project?max-results=600&alt=json";
@@ -27,25 +28,28 @@ export const useBlogPost = (title) => {
           dataType: "jsonp",
           url: BLOGGER_API_URL,
         });
-
+    
         const foundPost = data.feed.entry?.find(
           (entry) => createUrlFriendlyTitle(entry.title.$t) === title
         );
-
+    
         if (foundPost) {
           const postDetails = {
             title: foundPost.title.$t || "",
             content: foundPost.content.$t || "",
             author: foundPost.author[0].name.$t,
             date: formatDate(foundPost.published.$t),
+            categories: foundPost.category ? foundPost.category.map((cat) => cat.term) : ["Tech"],
+            image: foundPost["media$thumbnail"]
           };
-
+    
           setPost(postDetails);
         } else {
           console.error("Post not found");
           setPost({
             title: "Post Not Found",
             content: "The requested post could not be found.",
+            categories: ["Tech"] // add a default category here
           });
         }
       } catch (error) {
@@ -53,9 +57,11 @@ export const useBlogPost = (title) => {
         setPost({
           title: "Error",
           content: "An error occurred while fetching the post.",
+          categories: ["Tech"] // add a default category here
         });
       }
     };
+    
 
     fetchPost();
   }, [title]);

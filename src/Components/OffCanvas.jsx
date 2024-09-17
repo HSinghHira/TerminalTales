@@ -6,8 +6,7 @@ const OffCanvas = () => {
   return (
     <div
       id="Sidebar"
-      class="top-0 z-[80] fixed border-s dark:border-gray-700 hidden bg-white dark:bg-gray-800 w-full max-w-md h-full transform transition-all as-overlay-open:translate-x-0 duration-300 as-overlay as-overlay-body end-0"
-      tabindex="-1"
+      className="top-0 z-[80] fixed border-s dark:border-gray-700 hidden bg-white dark:bg-[#2d2d30] w-full max-w-md h-full transform transition-all as-overlay-open:translate-x-0 duration-300 as-overlay as-overlay-body end-0"
     >
       <div className="h-full as-overlay-body">
         <div className="flex justify-between items-center dark:border-gray-700 px-4 py-3 border-b">

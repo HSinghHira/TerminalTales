@@ -6,14 +6,14 @@
 @layer base {
   /* Body Styling */
   body {
-    @apply text-gray-700 bg-[#FAF8FF] dark:bg-[#1a1625];
+    @apply text-gray-700 bg-[#FAF8FF] dark:bg-[#1e1e1e] dark:text-gray-300 dark:grayscale;
   }
 }
 
 @layer components {
   /* Color */
   .color-primary {
-    @apply text-[#674aeb];
+    @apply text-[#674aeb] dark:text-gray-300; 
   }
 
   /* Button Styling */
@@ -26,7 +26,7 @@
 
   /* Header Icon */
   .header-icon {
-    @apply dark:text-[#674aeb] transition-none duration-500 hover:scale-110 ml-2 p-2 focus:ring-offset-2 text-gray-700;
+    @apply dark:text-gray-300 transition-none duration-500 hover:scale-110 ml-2 p-2 focus:ring-offset-2 text-gray-700;
   }
 }
 

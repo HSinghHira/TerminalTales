@@ -43,7 +43,7 @@ const Articles = () => {
           <button
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
-            className={`btn-primary ${
+            className={`btn-primary  ${
               currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -57,7 +57,7 @@ const Articles = () => {
           <button
             onClick={goToNextPage}
             disabled={currentPage === totalPages}
-            className={`btn-primary ${
+            className={`btn-primary  ${
               currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

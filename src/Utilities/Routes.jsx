@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
 import Contact from "../Pages/Contact";
 import NoPage from "../Pages/NoPage";
+import BlogPostPage from "../Pages/PostPage";
+import Post from "../Pages/Post";
 import ArticlesIndex from "../Components/ArticlesIndex";
-import BlogPostPage from "../Components/BlogPostPage";
+import SitemapXML from "../Components/SitemapXML";
 
-function AppRoutes() {
+function RoutesIndex() {
   return (
     <Router>
       <Routes>
@@ -15,10 +17,11 @@ function AppRoutes() {
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} />
           <Route path="post/:title" element={<BlogPostPage />} />
+          <Route path="post" element={<Post />} />
         </Route>
+        <Route path="/sitemap.xml" element={<SitemapXML />} />
       </Routes>
     </Router>
   );
 }
-
-export default AppRoutes;
+export default RoutesIndex;

@@ -1,7 +1,8 @@
 import React from "react";
+import ArticlesIndex from "../Components/ArticlesIndex";
 
 const Post = () => {
-  return <div>Post</div>;
+  return <ArticlesIndex />;
 };
 
 export default Post;
