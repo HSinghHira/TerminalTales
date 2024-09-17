@@ -1,5 +1,4 @@
 import FeaturedArticles from "./Components/FeaturedArticles";
-
 import Header from "./Components/Header";
 import RoutesIndex from "./Utilities/Routes";
 import OffCanvas from "./Components/OffCanvas";
