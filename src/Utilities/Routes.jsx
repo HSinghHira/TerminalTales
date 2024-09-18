@@ -1,5 +1,5 @@
 // Routes.jsx
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
 import Contact from "../Pages/Contact";
 import NoPage from "../Pages/NoPage";
