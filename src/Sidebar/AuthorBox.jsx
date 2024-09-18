@@ -10,7 +10,7 @@ import {
 const AuthorBox = () => {
   return (
     <>
-      <div className="bg-white dark:bg-[#252526] shadow-md pb-6 rounded-xl">
+      <div className="bg-white dark:bg-[#252526] shadow-md mt-20 pb-6 rounded-xl">
         <div className="flex flex-wrap justify-center">
           <div className="flex justify-center w-full">
             <div className="relative">

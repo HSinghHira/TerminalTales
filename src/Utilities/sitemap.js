@@ -61,7 +61,7 @@ async function generateSitemap() {
         priority: '1.0'
       },
       {
-        loc: `${SITE_URL}/contact`,
+        loc: `${SITE_URL}/#/contact`,
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',
         priority: '0.5'
@@ -80,7 +80,7 @@ async function generateSitemap() {
         const imageUrl = imageMatch ? imageMatch[1] : null;
 
         return {
-          loc: `${SITE_URL}/post/${slug}`,
+          loc: `${SITE_URL}/#/post/${slug}`,
           lastmod: updatedDate,
           changefreq: 'weekly',
           priority: '0.8',

@@ -3,6 +3,7 @@ import { LayoutDashboard, MoonStar, Sun } from "lucide-react";
 import { Offcanvas, Ripple, initTWE } from "tw-elements";
 import useDarkMode from "use-react-dark-mode";
 import SearchBox from "./SearchBox";
+import MobileSidebar from "./MobileSidebar";
 
 initTWE({ Offcanvas, Ripple });
 
@@ -14,12 +15,7 @@ const Header = () => {
         <div className="flex items-center ml-4">
           <div className="logo">
             <a href="/">
-              <img
-                src="https://ghost.estudiopatagon.com/zento/content/images/2024/01/logo-zento.svg"
-                alt="Zento"
-                width="170"
-                height="60"
-              />
+              <img src="./Logo.png" alt="Zento" className="w-20" />
             </a>
           </div>
         </div>
@@ -30,9 +26,7 @@ const Header = () => {
             {isDark ? <Sun /> : <MoonStar />}
           </button>
 
-          <button className="lg:hidden header-icon" data-as-overlay="#Sidebar">
-            <LayoutDashboard />
-          </button>
+          <MobileSidebar />
         </div>
       </header>
     </>

@@ -22,7 +22,7 @@ jobs:
       - name: Generate Sitemap
         run: node src/Utilities/sitemap.js
         env:
-          SITE_URL: "https://yourusername.github.io/your-repo-name"
+          SITE_URL: "https://www.terminaltales.com/"
 
       - name: Commit and push if changed
         run: |

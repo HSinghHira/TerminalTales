@@ -1,7 +1,7 @@
 import FeaturedArticles from "./Components/FeaturedArticles";
 import Header from "./Components/Header";
 import RoutesIndex from "./Utilities/Routes";
-import OffCanvas from "./Components/OffCanvas";
+
 import { Adsense } from "@ctrl/react-adsense";
 
 const App = () => {
@@ -10,7 +10,6 @@ const App = () => {
       {/* Header */}
       <div className="flex justify-center items-center mx-6 my-6">
         <Header />
-        <OffCanvas />
       </div>
 
       {/* Header Ad */}
