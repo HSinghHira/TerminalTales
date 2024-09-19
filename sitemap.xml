@@ -3,23 +3,23 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
     <url>
-      <loc>http://localhost:5173/</loc>
-      <lastmod>2024-09-19T08:31:16.970Z</lastmod>
+      <loc>https://www.terminaltales.com//</loc>
+      <lastmod>2024-09-19T08:37:02.409Z</lastmod>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
       
     </url>
   
     <url>
-      <loc>http://localhost:5173/#/contact</loc>
-      <lastmod>2024-09-19T08:31:16.970Z</lastmod>
+      <loc>https://www.terminaltales.com//#/contact</loc>
+      <lastmod>2024-09-19T08:37:02.410Z</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
       
     </url>
   
     <url>
-      <loc>http://localhost:5173/#/post/creating-a-website-for-apples-ios-shortcuts</loc>
+      <loc>https://www.terminaltales.com//#/post/creating-a-website-for-apples-ios-shortcuts</loc>
       <lastmod>2024-07-27T09:49:40.755Z</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -30,7 +30,7 @@
     </url>
   
     <url>
-      <loc>http://localhost:5173/#/post/muerte-kod-all-in-one-pubg-mobile-software</loc>
+      <loc>https://www.terminaltales.com//#/post/muerte-kod-all-in-one-pubg-mobile-software</loc>
       <lastmod>2024-09-03T06:07:18.128Z</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -41,7 +41,7 @@
     </url>
   
     <url>
-      <loc>http://localhost:5173/#/post/my-excel-adventure-at-dominos-pizza</loc>
+      <loc>https://www.terminaltales.com//#/post/my-excel-adventure-at-dominos-pizza</loc>
       <lastmod>2024-07-24T07:34:49.040Z</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -52,7 +52,7 @@
     </url>
   
     <url>
-      <loc>http://localhost:5173/#/post/aws-cloud-practitioner-practice-quiz-make-in-js</loc>
+      <loc>https://www.terminaltales.com//#/post/aws-cloud-practitioner-practice-quiz-make-in-js</loc>
       <lastmod>2024-07-24T06:09:47.287Z</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -63,7 +63,7 @@
     </url>
   
     <url>
-      <loc>http://localhost:5173/#/post/the-time-i-made-an-another-dekh-bhai-meme-creator</loc>
+      <loc>https://www.terminaltales.com//#/post/the-time-i-made-an-another-dekh-bhai-meme-creator</loc>
       <lastmod>2024-07-24T04:48:08.377Z</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -74,7 +74,7 @@
     </url>
   
     <url>
-      <loc>http://localhost:5173/#/post/the-time-i-made-dekh-bhai-meme-creator</loc>
+      <loc>https://www.terminaltales.com//#/post/the-time-i-made-dekh-bhai-meme-creator</loc>
       <lastmod>2024-07-24T04:47:55.169Z</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
