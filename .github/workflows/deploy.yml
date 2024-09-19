@@ -32,7 +32,7 @@ jobs:
           path: ./build
 
   deploy:
-    name: Deploy
+    name: Deploy to Website
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
