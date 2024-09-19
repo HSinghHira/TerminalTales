@@ -9,7 +9,10 @@ jobs:
   update-sitemap:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
 
       - name: Use Node.js
         uses: actions/setup-node@v2
@@ -24,9 +27,17 @@ jobs:
         env:
           SITE_URL: "https://www.terminaltales.com/"
 
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+
+      - name: Copy Sitemap to gh-pages
+        run: cp sitemap.xml ./  # Adjust path if sitemap.xml is in a different directory
+
       - name: Commit and push if changed
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add build/sitemap.xml
+          git add sitemap.xml
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update sitemap" && git push)
