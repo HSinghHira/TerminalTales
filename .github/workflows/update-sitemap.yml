@@ -34,30 +34,23 @@ jobs:
         env:
           SITE_URL: "https://www.terminaltales.com/"
 
-      # Debugging step: List files to verify the sitemap location
-      - name: List files in project directory
-        run: ls -R
-        # If you expect sitemap in a specific subdirectory, adjust the path, e.g., `ls -R build/`
-
       # Commit changes to the main branch before switching to gh-pages
       - name: Commit Changes on Main
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add build/sitemap.xml package-lock.json public/sitemap.xml || echo "Nothing to add"
+          git add build/sitemap.xml package-lock.json || echo "Nothing to add"
           git commit -m "Update sitemap files before switching branches" || echo "No changes to commit"
 
-      # Switch to gh-pages branch to deploy the sitemap
-      - name: Switch to gh-pages branch
+      # Fetch and checkout gh-pages branch for deployment
+      - name: Fetch and Switch to gh-pages branch
         run: |
           git fetch origin gh-pages
           git checkout gh-pages
 
-      # Copy the generated sitemap to the gh-pages branch
+      # Copy the generated sitemap to the root of gh-pages branch
       - name: Copy Sitemap to gh-pages
-        run: |
-          # Adjust the path if the sitemap is found in a different location during the listing step
-          cp public/sitemap.xml sitemap.xml
+        run: cp build/sitemap.xml sitemap.xml
 
       # Commit and push the sitemap changes if there are any
       - name: Commit and Push Sitemap Changes
