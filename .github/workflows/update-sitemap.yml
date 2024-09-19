@@ -9,35 +9,46 @@ jobs:
   update-sitemap:
     runs-on: ubuntu-latest
     steps:
+      # Checkout the main branch to get the latest code
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           ref: main
 
-      - name: Setup Node
+      # Setup Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # or the version your project requires
+          node-version: "20" # Set your required Node.js version
 
+      # Install dependencies using npm
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install
 
+      # Generate the sitemap using your custom script
       - name: Generate Sitemap
         run: npm run sitemap
         env:
           SITE_URL: "https://www.terminaltales.com/"
 
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v2
-        with:
-          ref: gh-pages
+      # Switch to gh-pages branch to deploy the sitemap
+      - name: Switch to gh-pages branch
+        run: |
+          git fetch
+          git checkout gh-pages
 
+      # Copy the generated sitemap to the current directory
       - name: Copy Sitemap to gh-pages
-        run: cp sitemap.xml ./
+        run: cp sitemap.xml .
 
-      - name: Commit and push if changed
+      # Commit and push the sitemap changes if there are any
+      - name: Commit and Push Sitemap Changes
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add sitemap.xml
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update sitemap" && git push)
+          # Only commit if there are changes
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-update sitemap"
+            git push
+          fi
