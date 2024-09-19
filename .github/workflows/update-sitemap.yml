@@ -12,11 +12,12 @@ jobs:
   update-sitemap:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the main branch to get the latest code
+      # Checkout the main branch to a temporary directory
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           ref: main
+          path: main
 
       # Setup Node.js environment
       - name: Setup Node.js
@@ -27,10 +28,12 @@ jobs:
       # Install dependencies using npm
       - name: Install dependencies
         run: npm install
+        working-directory: main
 
       # Generate the sitemap using your custom script
       - name: Generate Sitemap
         run: npm run sitemap
+        working-directory: main
         env:
           SITE_URL: "https://www.terminaltales.com/"
 
@@ -39,15 +42,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          path: gh-pages
 
       # Copy the generated sitemap to the gh-pages branch
       - name: Copy Sitemap to gh-pages
         run: |
-          cp ../main/build/sitemap.xml sitemap.xml
+          cp main/build/sitemap.xml gh-pages/sitemap.xml
 
       # Commit and push the sitemap changes if there are any
       - name: Commit and Push Sitemap Changes
         run: |
+          cd gh-pages
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add sitemap.xml
