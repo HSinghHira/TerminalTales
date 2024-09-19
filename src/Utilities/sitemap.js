@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const BLOGGER_FEED_URL = 'https://www.blogger.com/feeds/6428958383452564318/posts/default/-/Project?max-results=600&alt=json';
-const SITE_URL = 'http://localhost:5173'; // Replace with your actual website URL in production
+const SITE_URL = 'https://www.terminaltales.com/'; // Replace with your actual website URL in production
 
 function slugify(text) {
   return text
