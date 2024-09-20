@@ -1,39 +1,57 @@
 import { LayoutDashboard, X } from "lucide-react";
-import React from "react";
-import { Offcanvas, Ripple, initTWE } from "tw-elements";
+import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 
-initTWE({ Offcanvas, Ripple });
-
 const MobileSidebar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
+  // Function to close the sidebar when clicking outside of it
+  const handleOverlayClick = (e) => {
+    // Check if the click is outside the sidebar
+    if (e.target.id === "overlay") {
+      closeSidebar();
+    }
+  };
+
   return (
     <>
-      <div className="sm:block hidden">
-        <button
-          className="header-icon"
-          type="button"
-          data-twe-offcanvas-toggle
-          data-twe-target="#Sidebar"
-          aria-controls="Sidebar"
-          data-twe-ripple-init
-        >
-          <LayoutDashboard />
-        </button>
-      </div>
+      <button
+        onClick={toggleSidebar}
+        className="xs:block lg:hidden header-icon"
+      >
+        <LayoutDashboard />
+      </button>
 
+      {/* Overlay for dark background when sidebar is open */}
+      {isSidebarOpen && (
+        <div
+          id="overlay"
+          className="z-[1040] fixed inset-0 bg-black bg-opacity-50"
+          onClick={handleOverlayClick}
+        />
+      )}
+
+      {/* Sidebar */}
       <div
-        id="Sidebar"
-        data-twe-offcanvas-init
-        className="top-0 right-0 bottom-0 z-[1045] fixed flex flex-col dark:border-gray-700 bg-clip-padding bg-white dark:bg-[#2d2d30] shadow-sm border-none w-96 max-w-full data-[twe-offcanvas-show]:transform-none transition translate-x-full duration-300 invisible ease-in-out outline-none"
+        className={`fixed top-0 right-0 bottom-0 z-[1045] flex flex-col dark:border-gray-700 bg-clip-padding bg-white dark:bg-[#2d2d30] shadow-sm border-none w-96 max-w-full transition-transform duration-300 ease-in-out outline-none ${
+          isSidebarOpen ? "translate-x-0" : "translate-x-full invisible"
+        }`}
       >
         <div className="h-full as-overlay-body">
           <div className="flex justify-between items-center dark:border-gray-700 px-4 py-3 border-b">
             <h3 className="font-bold text-gray-800 dark:text-white">Sidebar</h3>
             <button
+              onClick={closeSidebar}
               type="button"
-              data-twe-offcanvas-dismiss
               className="flex justify-center items-center hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50 border border-transparent rounded-full font-semibold text-gray-800 text-sm dark:text-white disabled:pointer-events-none size-7"
-              data-as-overlay-close="#Sidebar"
             >
               <span className="sr-only">Close modal</span>
               <X />
