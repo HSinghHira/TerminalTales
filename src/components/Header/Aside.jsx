@@ -30,10 +30,10 @@ const Aside = ({ menuState, node }) => {
                       const Icon = icons[project.name]
                       return (
                         <li key={projectIndex}>
-                          <a href={project.path}>
+                          <Link to={project.path}>
                             {Icon ? <Icon size={18} /> : <Hammer size={18} />}
                             {project.name}
-                          </a>
+                          </Link>
                         </li>
                       )
                     })}

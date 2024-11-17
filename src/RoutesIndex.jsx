@@ -49,52 +49,50 @@ const loadComponent = (category, component) => {
 
 const RoutesIndex = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="*" element={<NotFound />} />
 
-        {routes.map((category) => {
-          if (!category?.category) {
-            console.error('Invalid category:', category)
-            return null
-          }
+      {routes.map((category) => {
+        if (!category?.category) {
+          console.error('Invalid category:', category)
+          return null
+        }
 
-          return (
-            <React.Fragment key={category.urlPath}>
-              <Route path={`/${category.urlPath}`} element={<CategoryPage />} />
-              {category.projects.map((project) => {
-                if (!project?.name) {
-                  console.error('Invalid project:', project)
-                  return null
-                }
+        return (
+          <React.Fragment key={category.urlPath}>
+            <Route path={`/${category.urlPath}`} element={<CategoryPage />} />
+            {category.projects.map((project) => {
+              if (!project?.name) {
+                console.error('Invalid project:', project)
+                return null
+              }
 
-                const Component = loadComponent(category.category, project.name)
+              const Component = loadComponent(category.category, project.name)
 
-                return (
-                  <Route
-                    key={project.path}
-                    path={project.path}
-                    element={
-                      <Suspense
-                        fallback={
-                          <div className="flex min-h-screen items-center justify-center">
-                            <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-primary"></div>
-                          </div>
-                        }
-                      >
-                        <Component />
-                      </Suspense>
-                    }
-                  />
-                )
-              })}
-            </React.Fragment>
-          )
-        })}
-      </Routes>
-    </Router>
+              return (
+                <Route
+                  key={project.path}
+                  path={project.path}
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="flex min-h-screen items-center justify-center">
+                          <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-primary"></div>
+                        </div>
+                      }
+                    >
+                      <Component />
+                    </Suspense>
+                  }
+                />
+              )
+            })}
+          </React.Fragment>
+        )
+      })}
+    </Routes>
   )
 }
 
