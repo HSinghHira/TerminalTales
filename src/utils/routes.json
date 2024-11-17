@@ -1,0 +1,17 @@
+[
+  {
+    "category": "HTML Tools",
+    "urlPath": "html-tools",
+    "originalFolder": "HTML-Tools",
+    "projects": [
+      {
+        "name": "HTML Minify",
+        "displayName": "HTML Minify",
+        "description": "Minify HTML code effortlessly Reduce file size, improve page load times, and boost website performance.",
+        "toolicon": "Code",
+        "path": "/html-tools/html-minify",
+        "fileName": "HTML-Minify.jsx"
+      }
+    ]
+  }
+]
