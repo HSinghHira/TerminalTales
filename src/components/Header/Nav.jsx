@@ -1,4 +1,8 @@
 import { Menu, Terminal, X } from 'lucide-react'
+import { AiOutlineGithub } from 'react-icons/ai'
+import { AiOutlineInstagram } from 'react-icons/ai'
+import { FaBluesky } from 'react-icons/fa6'
+import { TbSocial } from 'react-icons/tb'
 
 import DarkMode from './DarkMode'
 
@@ -22,17 +26,26 @@ const Nav = ({ menuState, setMenuState, buttonNode }) => {
       <div>
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Link</a>
-          </li>
-          <li>
             <details>
-              <summary>Socials</summary>
+              <summary>
+                <TbSocial size={20} /> Follow me
+              </summary>
               <ul className="rounded-t-none bg-base-100 p-2">
                 <li>
-                  <a href="https://instagram.com/hsinghhira">Instagram</a>
+                  <a href="https://instagram.com/hsinghhira">
+                    <AiOutlineInstagram size={20} /> Instagram
+                  </a>
                 </li>
                 <li>
-                  <a href="https://github.com/HSinghHira">Github</a>
+                  <a href="https://github.com/HSinghHira">
+                    <AiOutlineGithub size={20} />
+                    Github
+                  </a>
+                </li>
+                <li>
+                  <a href="https://hsinghhira.bsky.social/">
+                    <FaBluesky size={20} /> Bluesky
+                  </a>
                 </li>
               </ul>
             </details>
