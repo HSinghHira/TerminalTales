@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 
 import About from './pages/About'
 import CategoryPage from './pages/CategoryPage'
@@ -44,7 +44,7 @@ const loadComponent = (category, component) => {
 
 const RoutesIndex = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -74,8 +74,8 @@ const RoutesIndex = () => {
                     element={
                       <Suspense
                         fallback={
-                          <div className="flex justify-center items-center min-h-screen">
-                            <div className="border-primary border-b-2 rounded-full w-32 h-32 animate-spin"></div>
+                          <div className="flex min-h-screen items-center justify-center">
+                            <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-primary"></div>
                           </div>
                         }
                       >
@@ -89,7 +89,7 @@ const RoutesIndex = () => {
           )
         })}
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
 

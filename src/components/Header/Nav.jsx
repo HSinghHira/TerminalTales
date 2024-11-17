@@ -1,4 +1,4 @@
-import { Menu, X } from 'lucide-react'
+import { Menu, Terminal, X } from 'lucide-react'
 
 import DarkMode from './DarkMode'
 
@@ -16,7 +16,7 @@ const Nav = ({ menuState, setMenuState, buttonNode }) => {
       </div>
       <div className="flex-1">
         <a className="btn btn-ghost text-xl" href="/">
-          ironHoe
+          <Terminal /> TerminalTales
         </a>
       </div>
       <div>
@@ -29,10 +29,10 @@ const Nav = ({ menuState, setMenuState, buttonNode }) => {
               <summary>Socials</summary>
               <ul className="rounded-t-none bg-base-100 p-2">
                 <li>
-                  <a></a>
+                  <a href="https://instagram.com/hsinghhira">Instagram</a>
                 </li>
                 <li>
-                  <a>Link 2</a>
+                  <a href="https://github.com/HSinghHira">Github</a>
                 </li>
               </ul>
             </details>
