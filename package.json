@@ -1,12 +1,12 @@
 {
-  "name": "new-folder--2-",
+  "name": "terminaltales",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "homepage": "http://www.terminaltales.com",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node src/utils/generateRoutes.js",
     "lint": "eslint .",
     "routes": "node src/utils/generateRoutes.js",
     "preview": "vite preview"
