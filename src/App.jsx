@@ -1,4 +1,5 @@
 import RoutesIndex from './RoutesIndex'
+import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
             <RoutesIndex />
           </main>
         </div>
+        <Footer />
       </div>
     </div>
   )

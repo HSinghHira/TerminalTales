@@ -23,6 +23,16 @@ const HTMLMinifier = () => {
     removeQuotes: true
   })
 
+  // Custom labels for options
+  const customLabels = {
+    removeComments: 'Remove Comments',
+    removeWhitespace: 'Remove Whitespace',
+    removeEmptyAttributes: 'Remove Empty Attributes',
+    minifyInlineCss: 'Minify Inline CSS',
+    minifyInlineJs: 'Minify Inline JavaScript',
+    removeQuotes: 'Remove Unnecessary Quotes'
+  }
+
   const minifyHTML = (html) => {
     let result = html
 
@@ -148,7 +158,7 @@ const HTMLMinifier = () => {
                 </div>
 
                 {/* Options */}
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {Object.entries(options).map(([key, value]) => (
                     <div key={key} className="form-control">
                       <label className="label cursor-pointer">
@@ -160,7 +170,7 @@ const HTMLMinifier = () => {
                             onChange={() => handleOptionChange(key)}
                           />
                           <span className="label-text">
-                            {key.split(/(?=[A-Z])/).join(' ')}
+                            {customLabels[key]} {/* Use custom label here */}
                           </span>
                         </div>
                       </label>
@@ -194,7 +204,8 @@ const HTMLMinifier = () => {
                     aria-label="Settings toolbar"
                   >
                     <button className="btn btn-primary" onClick={handleMinify}>
-                      <Hammer className="h-5 w-5" /> Minify
+                      <Hammer className="h-5 w-5" />{' '}
+                      <span className=""> Minify</span>
                     </button>
                   </div>
                   {/* Main Button End */}
