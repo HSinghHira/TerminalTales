@@ -28,7 +28,7 @@ const Nav = ({ menuState, setMenuState, buttonNode }) => {
           <li>
             <details>
               <summary>
-                <TbSocial size={20} /> Follow me
+                <TbSocial size={20} /> Follow
               </summary>
               <ul className="rounded-t-none bg-base-100 p-2">
                 <li>
