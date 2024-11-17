@@ -7,39 +7,44 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import routes from './utils/routes.json'
 
+// Define a mapping of all components using import.meta.glob
+const componentModules = import.meta.glob('./Tools/**/*.jsx')
+
 // Function to dynamically import components
 const loadComponent = (category, component) => {
-  return React.lazy(() => {
-    try {
-      // Use the original folder name from routes.json to maintain correct casing
-      const categoryFolder = routes.find(
-        (cat) =>
-          cat.category.toLowerCase().replace(/\s+/g, '') ===
-          category.toLowerCase().replace(/\s+/g, '')
-      )?.originalFolder
+  try {
+    const categoryFolder = routes.find(
+      (cat) =>
+        cat.category.toLowerCase().replace(/\s+/g, '') ===
+        category.toLowerCase().replace(/\s+/g, '')
+    )?.originalFolder
 
-      if (!categoryFolder) {
-        throw new Error(`Category folder not found for: ${category}`)
-      }
-
-      // Use the original file name from routes.json
-      const project = routes
-        .find((cat) => cat.category === category)
-        ?.projects.find((proj) => proj.name === component)
-
-      if (!project) {
-        throw new Error(
-          `Project not found for: ${component} in category ${category}`
-        )
-      }
-
-      // Construct the import path using the original folder and file names
-      return import(`./Tools/${categoryFolder}/${project.fileName}`)
-    } catch (error) {
-      console.error('Component loading error:', error)
-      return Promise.reject(error)
+    if (!categoryFolder) {
+      throw new Error(`Category folder not found for: ${category}`)
     }
-  })
+
+    const project = routes
+      .find((cat) => cat.category === category)
+      ?.projects.find((proj) => proj.name === component)
+
+    if (!project) {
+      throw new Error(
+        `Project not found for: ${component} in category ${category}`
+      )
+    }
+
+    const importPath = `./Tools/${categoryFolder}/${project.fileName}`
+    const module = componentModules[importPath]
+
+    if (!module) {
+      throw new Error(`Component module not found for path: ${importPath}`)
+    }
+
+    return React.lazy(module)
+  } catch (error) {
+    console.error('Component loading error:', error)
+    return Promise.reject(error)
+  }
 }
 
 const RoutesIndex = () => {
