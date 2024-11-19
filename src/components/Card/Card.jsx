@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 
 const Card = ({ project, Icon }) => {
   return (
-    <div className="bg-base-200/30 shadow-xl w-full card">
+    <div className="card w-full bg-base-200/30 shadow-xl">
       <div className="card-body">
-        <h2 className="card-title">
+        <h3 className="card-title">
           {Icon ? (
             <Icon className="mr-1" />
           ) : (
@@ -16,9 +16,9 @@ const Card = ({ project, Icon }) => {
             </span>
           )}
           {project.name}
-        </h2>
+        </h3>
         {project.description && <p>{project.description}</p>}
-        <div className="justify-end card-actions">
+        <div className="card-actions justify-end">
           <Link to={project.path} className="btn btn-primary">
             {project.buttonText || 'Try Now'}
           </Link>

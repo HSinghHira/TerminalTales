@@ -20,7 +20,7 @@ const Nav = ({ menuState, setMenuState, buttonNode }) => {
       </div>
       <div className="flex-1">
         <a className="btn btn-ghost text-xl" href="/">
-          <Terminal /> TerminalTales
+          <Terminal /> <h1>TerminalTales</h1>
         </a>
       </div>
       <div>

@@ -18,7 +18,7 @@ const CategoryPage = () => {
   if (!category) {
     return (
       <div className="p-4">
-        <h1 className="mb-4 font-bold text-2xl">Category Not Found</h1>
+        <h2 className="mb-4 text-2xl font-bold">Category Not Found</h2>
         <p className="mb-4">The requested category could not be found.</p>
         <Link to="/" className="">
           Return to Home
@@ -29,13 +29,13 @@ const CategoryPage = () => {
 
   return (
     <div className="p-4">
-      <div className="items-center mb-4">
-        <h1 className="flex items-center font-semibold text-2xl">
+      <div className="mb-4 items-center">
+        <h2 className="flex items-center text-2xl font-semibold">
           <Hash className="mr-2 duration-300 hover:rotate-12" size={30} />
           {category.category}
-        </h1>
+        </h2>
       </div>
-      <div className="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {category.projects.map((project, index) => {
           const Icon = icons[project.name]
           return <Card key={index} project={project} Icon={Icon} />
