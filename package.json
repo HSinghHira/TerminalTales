@@ -9,11 +9,17 @@
     "build": "vite build && node src/utils/generateRoutes.js",
     "lint": "eslint .",
     "routes": "node src/utils/generateRoutes.js",
+    "fav": "node src/hooks/favicon.js",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@realfavicongenerator/generate-favicon": "^0.4.6",
+    "@realfavicongenerator/image-adapter-node": "^0.4.6",
     "@tailwindcss/typography": "^0.5.15",
+    "fs": "^0.0.1-security",
+    "gsap": "^3.12.5",
     "lucide-react": "^0.454.0",
+    "path": "^0.12.7",
     "react": "^18.3.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.3.1",

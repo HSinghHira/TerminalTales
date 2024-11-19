@@ -1,4 +1,4 @@
-import { Eraser, Hammer, Hash, ThumbsUp } from 'lucide-react'
+import { Eraser, Hammer, Hash } from 'lucide-react'
 import React, { useState } from 'react'
 
 import ChooseFile from '../../components/Buttons/ChooseFile'
@@ -223,7 +223,8 @@ const HTMLMinifier = () => {
         {/* Information Area Starts */}
         <div className="mt-4 p-4">
           <h2 className="mb-4 flex items-center text-2xl font-semibold">
-            <Hash /> What is HTML Minify?
+            <Hash className="mr-2 duration-300 hover:rotate-12" size={30} />{' '}
+            What is HTML Minify?
           </h2>
           <div className="card prose w-full max-w-none bg-base-200/30 px-6 shadow-xl">
             <div className="card">
