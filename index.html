@@ -1,33 +1,44 @@
 <!doctype html>
 <html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terminal Tales</title>
-    <script type="module" crossorigin src="./assets/index-D6M46-C9.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/tools-html-tools-DcUC1-MI.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-lWWgMEbV.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/javascript">
-      ;(function (l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search
-            .slice(1)
-            .split('&')
-            .map(function (s) {
-              return s.replace(/~and~/g, '&')
-            })
-            .join('?')
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          )
-        }
-      })(window.location)
-    </script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+
+  <link rel="icon" type="image/svg+xml" href="./favicon/light/favicon.svg" media="(prefers-color-scheme: dark)" />
+  <link rel="shortcut icon" href="./favicon/light/favicon.ico" media="(prefers-color-scheme: dark)" />
+
+  <link rel="icon" type="image/svg+xml" href="./favicon/dark/favicon.svg" media="(prefers-color-scheme: light)" />
+  <link rel="shortcut icon" href="./favicon/dark/favicon.ico" media="(prefers-color-scheme: light)" />
+
+  <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="TTales" />
+  <link rel="manifest" href="./favicon//site.webmanifest" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal Tales</title>
+  <script type="module" crossorigin src="./assets/index-_9t5Qphb.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/tools-html-tools-DHWOadsV.js">
+  <link rel="stylesheet" crossorigin href="./assets/index-DhFFHCxl.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/javascript">
+    (function (l) {
+      if (l.search[1] === "/") {
+        var decoded = l.search
+          .slice(1)
+          .split("&")
+          .map(function (s) {
+            return s.replace(/~and~/g, "&");
+          })
+          .join("?");
+        window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+      }
+    })(window.location);
+  </script>
+</body>
+
 </html>
