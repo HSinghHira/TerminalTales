@@ -54,7 +54,7 @@ const HomePage = () => {
               </h2>
               <Link
                 to={`/${category.urlPath}`}
-                className="hover:text-primary-focus text-primary"
+                className="hover:text-primary-focus font-semibold text-primary"
               >
                 View All →
               </Link>

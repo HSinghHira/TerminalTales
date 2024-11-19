@@ -14,6 +14,7 @@ const Nav = ({ menuState, setMenuState, buttonNode }) => {
           ref={buttonNode}
           className="btn btn-square btn-ghost transition-transform duration-100 hover:scale-110 hover:bg-transparent xl:hidden"
           onClick={() => setMenuState(!menuState)}
+          aria-label={menuState ? 'Close menu' : 'Open menu'} // Add descriptive label
         >
           {menuState ? <X /> : <Menu />}
         </button>

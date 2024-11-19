@@ -32,6 +32,7 @@ const DarkModeButton = () => {
         className="theme-controller"
         checked={isDarkMode}
         onChange={handleThemeChange}
+        aria-label="Toggle dark mode" // Add descriptive label
       />
 
       {/* Sun icon */}
