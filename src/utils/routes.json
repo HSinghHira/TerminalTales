@@ -10,7 +10,22 @@
         "description": "Minify HTML code effortlessly Reduce file size, improve page load times, and boost website performance.",
         "toolicon": "Code",
         "path": "/html-tools/html-minify",
-        "fileName": "HTML-Minify.jsx"
+        "fileName": "HTML-Minify/index.jsx"
+      }
+    ]
+  },
+  {
+    "category": "Text Tools",
+    "urlPath": "text-tools",
+    "originalFolder": "Text-Tools",
+    "projects": [
+      {
+        "name": "Case Converter",
+        "displayName": "Case Converter",
+        "description": "",
+        "toolicon": "",
+        "path": "/text-tools/case-converter",
+        "fileName": "Case-Converter/index.jsx"
       }
     ]
   }

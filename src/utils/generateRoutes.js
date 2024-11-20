@@ -17,10 +17,7 @@ function formatUrlPath(name) {
 
 // Format component names consistently
 function formatComponentName(name) {
-  return name
-    .replace(/\s+/g, ' ')
-    .replace(/^./, (str) => str.toUpperCase())
-    .replace(/.jsx$/i, '')
+  return name.replace(/\s+/g, ' ').replace(/^./, (str) => str.toUpperCase())
 }
 
 // List of common acronyms to preserve
@@ -39,9 +36,6 @@ const commonAcronyms = [
 ]
 
 function convertToReadableName(name) {
-  // Remove file extension
-  name = name.replace(/.jsx$/i, '')
-
   // Split by hyphens
   const parts = name.split('-')
 
@@ -60,61 +54,77 @@ function convertToReadableName(name) {
     .join(' ')
 }
 
-function extractDescription(filePath) {
+function extractMetadata(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8')
-    const match = content.match(/Description\s*=\s*(['"])((?:(?!\1).)*)\1/)
-    return match ? match[2] : ''
+    const description = content.match(
+      /Description\s*=\s*(['"])((?:(?!\1).)*)\1/
+    )
+    const toolIcon = content.match(/ToolIcon\s*=\s*(['"])((?:(?!\1).)*)\1/)
+
+    return {
+      description: description ? description[2] : '',
+      toolicon: toolIcon ? toolIcon[2] : ''
+    }
   } catch (error) {
-    console.error(`Error reading description from ${filePath}:`, error)
-    return ''
+    console.error(`Error reading metadata from ${filePath}:`, error)
+    return { description: '', toolicon: '' }
   }
 }
 
-function extractToolIcon(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8')
-    const match = content.match(/ToolIcon\s*=\s*(['"])((?:(?!\1).)*)\1/)
-    return match ? match[2] : ''
-  } catch (error) {
-    console.error(`Error reading icon from ${filePath}:`, error)
-    return ''
-  }
+function findIndexFile(dir) {
+  const indexPath = path.join(dir, 'index.jsx')
+  return fs.existsSync(indexPath) ? indexPath : null
+}
+
+function normalizePath(filePath) {
+  return filePath.split(path.sep).join('/')
 }
 
 function generateRoutes(dir) {
   return fs
     .readdirSync(dir)
-    .map((folder) => {
-      const categoryPath = path.join(dir, folder)
+    .map((categoryFolder) => {
+      const categoryPath = path.join(dir, categoryFolder)
       if (!fs.statSync(categoryPath).isDirectory()) return null
 
-      // Format category path for URLs
-      const urlSafeFolder = formatUrlPath(folder)
+      const urlSafeCategory = formatUrlPath(categoryFolder)
+      const projects = []
 
-      const projects = fs
-        .readdirSync(categoryPath)
-        .filter((file) => file.endsWith('.jsx'))
-        .map((file) => {
-          const filePath = path.join(categoryPath, file)
-          const description = extractDescription(filePath)
-          const toolicon = extractToolIcon(filePath)
-          const urlSafeFile = formatUrlPath(file.replace(/.jsx$/i, ''))
+      // Read all project folders within the category
+      fs.readdirSync(categoryPath).forEach((projectFolder) => {
+        const projectPath = path.join(categoryPath, projectFolder)
 
-          return {
-            name: convertToReadableName(file),
-            displayName: convertToReadableName(file),
-            description: description,
-            toolicon: toolicon,
-            path: `/${urlSafeFolder}/${urlSafeFile}`,
-            fileName: file
-          }
+        // Skip if not a directory or doesn't contain index.jsx
+        if (!fs.statSync(projectPath).isDirectory()) return
+
+        const indexFile = findIndexFile(projectPath)
+        if (!indexFile) return
+
+        const { description, toolicon } = extractMetadata(indexFile)
+        const urlSafeProject = formatUrlPath(projectFolder)
+
+        // Normalize the relative path to use forward slashes
+        const relativePath = path.relative(
+          path.join(dir, categoryFolder),
+          indexFile
+        )
+        const normalizedPath = normalizePath(relativePath)
+
+        projects.push({
+          name: convertToReadableName(projectFolder),
+          displayName: convertToReadableName(projectFolder),
+          description: description,
+          toolicon: toolicon,
+          path: `/${urlSafeCategory}/${urlSafeProject}`,
+          fileName: normalizedPath
         })
+      })
 
       return {
-        category: convertToReadableName(folder),
-        urlPath: urlSafeFolder,
-        originalFolder: folder,
+        category: convertToReadableName(categoryFolder),
+        urlPath: urlSafeCategory,
+        originalFolder: categoryFolder,
         projects
       }
     })

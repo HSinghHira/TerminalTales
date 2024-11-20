@@ -6,6 +6,9 @@ import ChooseFile from '../../../components/Buttons/ChooseFile'
 import CopyButton from '../../../components/Buttons/Copy'
 import SaveFile from '../../../components/Buttons/SaveFile'
 import Related from '../../../components/Related/Related'
+import Article from './Article'
+import SEO from './SEO'
+import { minifyHTML } from './datascript'
 
 const Description =
   'Minify HTML code effortlessly Reduce file size, improve page load times, and boost website performance.'
@@ -13,6 +16,49 @@ const Description =
 const ToolIcon = 'Code'
 
 const HTMLMinifier = () => {
+  const [inputHtml, setInputHtml] = useState('')
+  const [outputHtml, setOutputHtml] = useState('')
+  const [options, setOptions] = useState({
+    removeComments: true,
+    removeWhitespace: true,
+    removeEmptyAttributes: true,
+    minifyInlineCss: true,
+    minifyInlineJs: true,
+    removeQuotes: true
+  })
+
+  // Custom labels for options
+  const customLabels = {
+    removeComments: 'Remove Comments',
+    removeWhitespace: 'Remove Whitespace',
+    removeEmptyAttributes: 'Remove Empty Attributes',
+    minifyInlineCss: 'Minify Inline CSS',
+    minifyInlineJs: 'Minify Inline JavaScript',
+    removeQuotes: 'Remove Unnecessary Quotes'
+  }
+
+  const handleMinify = () => {
+    try {
+      const minified = minifyHTML(inputHtml, options)
+      setOutputHtml(minified)
+    } catch (error) {
+      console.error('Minification error:', error)
+      setOutputHtml('Error occurred during minification')
+    }
+  }
+
+  const handleClear = () => {
+    setInputHtml('')
+    setOutputHtml('')
+  }
+
+  const handleOptionChange = (optionName) => {
+    setOptions((prev) => ({
+      ...prev,
+      [optionName]: !prev[optionName]
+    }))
+  }
+
   return (
     <>
       <SEO />
@@ -26,6 +72,28 @@ const HTMLMinifier = () => {
           <div className="card w-full bg-base-200/30 p-4 shadow-xl">
             <div className="card">
               <div className="card-content space-y-4">
+                {/* Input and Output Textareas */}
+                <div className="flex flex-col gap-4 md:flex-row">
+                  <div className="flex-1">
+                    <textarea
+                      value={inputHtml}
+                      onChange={(e) => setInputHtml(e.target.value)}
+                      rows="10"
+                      placeholder="Enter your HTML code here"
+                      className="textarea textarea-bordered w-full"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <textarea
+                      value={outputHtml}
+                      readOnly
+                      rows="10"
+                      placeholder="Minified HTML will appear here"
+                      className="textarea textarea-bordered w-full"
+                    />
+                  </div>
+                </div>
+
                 {/* Options */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {Object.entries(options).map(([key, value]) => (
@@ -90,7 +158,7 @@ const HTMLMinifier = () => {
         </div>
         {/* Related Area Ends */}
         {/* Information Area Starts */}
-
+        <Article />
         {/* Information Area Ends */}
       </article>
     </>

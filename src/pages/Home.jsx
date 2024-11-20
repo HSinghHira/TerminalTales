@@ -52,12 +52,13 @@ const HomePage = () => {
                 <Hash className="mr-2 duration-300 hover:rotate-12" size={30} />
                 {category.category}
               </h2>
-              <Link
-                to={`/${category.urlPath}`}
+              <button
+                onClick={() => (window.location.href = `/${category.urlPath}`)}
                 className="hover:text-primary-focus font-semibold text-primary"
+                aria-label={`View all items in ${category.name}`}
               >
                 View All →
-              </Link>
+              </button>
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

@@ -8,7 +8,12 @@ import NotFound from './pages/NotFound'
 import routes from './utils/routes.json'
 
 // Define a mapping of all components using import.meta.glob
-const componentModules = import.meta.glob('./Tools/**/*.jsx')
+const componentModules = import.meta.glob('./Tools/**/*.jsx', { eager: false })
+
+// Function to normalize path separators for import.meta.glob
+function normalizePath(filePath) {
+  return filePath.replace(/\\/g, '/')
+}
 
 // Function to dynamically import components
 const loadComponent = (category, component) => {
@@ -33,10 +38,14 @@ const loadComponent = (category, component) => {
       )
     }
 
-    const importPath = `./Tools/${categoryFolder}/${project.fileName}`
+    // Normalize the path to use forward slashes
+    const importPath = normalizePath(
+      `./Tools/${categoryFolder}/${project.fileName}`
+    )
     const module = componentModules[importPath]
 
     if (!module) {
+      console.error('Available paths:', Object.keys(componentModules))
       throw new Error(`Component module not found for path: ${importPath}`)
     }
 
