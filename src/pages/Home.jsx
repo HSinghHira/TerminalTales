@@ -47,21 +47,23 @@ const HomePage = () => {
       <div className="p-6">
         {routes.map((category, categoryIndex) => (
           <div key={categoryIndex} className="mb-12">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="flex items-center text-2xl font-semibold">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="flex items-center font-semibold text-2xl">
                 <Hash className="mr-2 duration-300 hover:rotate-12" size={30} />
                 {category.category}
               </h2>
               <button
-                onClick={() => (window.location.href = `/${category.urlPath}`)}
-                className="hover:text-primary-focus font-semibold text-primary"
+                onClick={() =>
+                  (window.location.href = `/#/${category.urlPath}`)
+                }
+                className="font-semibold text-primary hover:text-primary-focus"
                 aria-label={`View all items in ${category.name}`}
               >
                 View All →
               </button>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {category.projects.map((project, projectIndex) => {
                 const Icon = icons[project.name]
                 return <Card key={projectIndex} project={project} Icon={Icon} />

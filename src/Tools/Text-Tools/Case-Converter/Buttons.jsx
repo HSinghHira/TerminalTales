@@ -22,9 +22,6 @@ const Buttons = ({
         role="toolbar"
         aria-label="Settings toolbar"
       >
-        <button className="btn btn-secondary" onClick={keepText}>
-          <Lock className="w-4 h-4" /> Keep Text
-        </button>
         <button className="btn btn-primary" onClick={convertToSentenceCase}>
           Sentence Case
         </button>

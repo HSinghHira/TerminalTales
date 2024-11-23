@@ -1,4 +1,4 @@
-import { Hash, Replace, Search } from 'lucide-react'
+import { Hash, Lock, Replace, Search } from 'lucide-react'
 import React from 'react'
 
 import ChooseFile from '../../../components/Buttons/ChooseFile'
@@ -51,26 +51,25 @@ const CaseConvert = () => {
       <article>
         {/* Tool Area Starts */}
         <div className="mt-4 p-4">
-          <h2 className="mb-4 flex items-center text-2xl font-semibold">
+          <h2 className="flex items-center mb-4 font-semibold text-2xl">
             <Hash className="mr-2 duration-300 hover:rotate-12" size={30} />
             Case Convertor
           </h2>
-          <div className="card w-full bg-base-200/30 p-4 shadow-xl">
+          <div className="bg-base-200/30 shadow-xl p-4 w-full card">
             <div className="card">
-              <div className="card-content space-y-4">
+              <div className="space-y-4 card-content">
                 {/* Main Area */}
-                <div className="flex flex-col gap-4 md:flex-row">
+                <div className="flex md:flex-row flex-col gap-4">
                   <div className="flex-1">
                     <textarea
-                      className="textarea textarea-bordered h-48 w-full"
+                      className="textarea-bordered w-full h-48 textarea"
                       placeholder="Enter your text here..."
                       value={inputText}
                       onChange={handleInputChange}
                       style={{ display: 'none' }}
                     ></textarea>
                     <div
-                      className="textarea textarea-bordered h-48 w-full p-4"
-                      rows="10"
+                      className="p-4 textarea-bordered max-w-full h-48 break-all overflow-auto textarea"
                       dangerouslySetInnerHTML={{
                         __html: highlightedText || outputText || inputText
                       }}
@@ -80,37 +79,59 @@ const CaseConvert = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
-                  <div className="join">
-                    <input
-                      className="input join-item input-bordered w-full rounded-l-lg focus:outline-none"
-                      type="text"
-                      placeholder="Search"
-                      value={searchText}
-                      onChange={handleSearchChange}
-                    />
+                <div className="flex 2xl:flex-row flex-col justify-between space-y-2 2xl:space-y-0">
+                  <div className="flex sm:flex-row flex-col sm:space-x-2 space-y-2 sm:space-y-0">
+                    <div className="flex-1 join">
+                      <input
+                        className="input-bordered rounded-l-lg w-full input join-item focus:outline-none"
+                        type="text"
+                        placeholder="Search"
+                        value={searchText}
+                        onChange={handleSearchChange}
+                      />
+                      <button
+                        className="btn btn-primary join-item"
+                        onClick={handleSearch}
+                      >
+                        <Search className="w-5 h-5" />
+                      </button>
+                    </div>
+
+                    <div className="flex-1 join">
+                      <input
+                        className="input-bordered rounded-l-lg w-full input join-item focus:outline-none"
+                        type="text"
+                        placeholder="Replace with"
+                        value={replaceText}
+                        onChange={handleReplaceChange}
+                      />
+                      <button
+                        className="btn btn-primary join-item"
+                        onClick={handleReplace}
+                      >
+                        <Replace className="w-5 h-5" />
+                      </button>
+                    </div>
+
                     <button
-                      className="btn btn-primary join-item"
-                      onClick={handleSearch}
+                      className="flex-shrink-0 btn btn-secondary md:btn-wide"
+                      onClick={keepText}
                     >
-                      <Search className="h-5 w-5" />
+                      <Lock className="w-4 h-4" /> Keep Text
                     </button>
                   </div>
 
-                  <div className="join">
-                    <input
-                      className="hover: input join-item input-bordered w-full rounded-l-lg focus:outline-none"
-                      type="text"
-                      placeholder="Replace with"
-                      value={replaceText}
-                      onChange={handleReplaceChange}
-                    />
-                    <button
-                      className="btn btn-primary join-item"
-                      onClick={handleReplace}
-                    >
-                      <Replace className="h-5 w-5" />
-                    </button>
+                  <div
+                    className="flex flex-wrap items-center space-x-1 mt-2"
+                    role="toolbar"
+                    aria-label="Settings toolbar"
+                  >
+                    <div className="flex space-x-2">
+                      <ChooseFile onFileContent={handleFileContent} />
+                      <CopyButton output={outputText} />
+                      <SaveFile formats={['txt']} content={outputText} />
+                      <Clear onClear={clearInput} />
+                    </div>
                   </div>
                 </div>
 
@@ -127,20 +148,9 @@ const CaseConvert = () => {
                   removeExtraSpaces={removeExtraSpaces}
                   removeAllSpaces={removeAllSpaces}
                   removeEnter={removeEnter}
-                  keepText={keepText}
                 />
 
                 {/* Button Toolbar */}
-                <div
-                  className="my-2 flex items-center space-x-1"
-                  role="toolbar"
-                  aria-label="Settings toolbar"
-                >
-                  <ChooseFile onFileContent={handleFileContent} />
-                  <CopyButton content={outputText} />
-                  <SaveFile formats={['txt']} content={outputText} />
-                  <Clear onClear={clearInput} />
-                </div>
               </div>
             </div>
           </div>
