@@ -22,8 +22,8 @@
       {
         "name": "Case Converter",
         "displayName": "Case Converter",
-        "description": "",
-        "toolicon": "",
+        "description": "Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, aLtErNaTiNg cAsE, and more with our online Case Converter.",
+        "toolicon": "ALargeSmall",
         "path": "/text-tools/case-converter",
         "fileName": "Case-Converter/index.jsx"
       }

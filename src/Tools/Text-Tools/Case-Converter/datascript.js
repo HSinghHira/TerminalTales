@@ -3,9 +3,59 @@ import { useState } from 'react'
 export const useCaseConvert = () => {
   const [inputText, setInputText] = useState('')
   const [outputText, setOutputText] = useState('')
+  const [searchText, setSearchText] = useState('')
+  const [replaceText, setReplaceText] = useState('')
+  const [highlightedText, setHighlightedText] = useState('')
 
   const handleInputChange = (e) => {
     setInputText(e.target.value)
+  }
+
+  const handleFileContent = (content) => {
+    setInputText(content)
+  }
+
+  const clearInput = () => {
+    setInputText('')
+    setOutputText('')
+    setSearchText('')
+    setReplaceText('')
+    setHighlightedText('')
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value)
+  }
+
+  const handleReplaceChange = (e) => {
+    setReplaceText(e.target.value)
+  }
+
+  const handleReplace = () => {
+    const replacedText = inputText.replace(
+      new RegExp(searchText, 'g'),
+      replaceText
+    )
+    setOutputText(replacedText)
+    setHighlightedText('') // Clear highlighting after replace
+  }
+
+  const handleSearch = () => {
+    if (searchText) {
+      const regex = new RegExp(`(${searchText})`, 'gi')
+      const highlighted = inputText.replace(regex, '<mark>$1</mark>')
+      setHighlightedText(highlighted)
+    } else {
+      setHighlightedText(inputText)
+    }
+  }
+
+  const keepText = () => {
+    if (outputText) {
+      setInputText(outputText)
+      setOutputText('')
+      setHighlightedText('')
+    }
   }
 
   const convertToSentenceCase = () => {
@@ -73,7 +123,17 @@ export const useCaseConvert = () => {
   return {
     inputText,
     outputText,
+    searchText,
+    replaceText,
+    highlightedText,
     handleInputChange,
+    handleFileContent,
+    clearInput,
+    handleSearchChange,
+    handleReplaceChange,
+    handleReplace,
+    handleSearch,
+    keepText,
     convertToSentenceCase,
     convertToCapitalizedCase,
     convertToTitleCase,

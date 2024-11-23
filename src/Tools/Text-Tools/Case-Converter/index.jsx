@@ -1,25 +1,36 @@
-// index.jsx
-import { Eraser, Hammer, Hash, Replace, Search } from 'lucide-react'
-import React, { useState } from 'react'
+import { Hash, Replace, Search } from 'lucide-react'
+import React from 'react'
 
 import ChooseFile from '../../../components/Buttons/ChooseFile'
 import Clear from '../../../components/Buttons/Clear'
 import CopyButton from '../../../components/Buttons/Copy'
 import SaveFile from '../../../components/Buttons/SaveFile'
 import Related from '../../../components/Related/Related'
+import Article from './Article'
 import Buttons from './Buttons'
+import SEO from './SEO'
 import { useCaseConvert } from './datascript'
 
 const Description =
-  'Minify HTML code effortlessly Reduce file size, improve page load times, and boost website performance.'
+  'Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, aLtErNaTiNg cAsE, and much more.'
 
-const ToolIcon = 'Code'
+const ToolIcon = 'ALargeSmall'
 
 const CaseConvert = () => {
   const {
     inputText,
     outputText,
+    searchText,
+    replaceText,
+    highlightedText,
     handleInputChange,
+    handleFileContent,
+    clearInput,
+    handleSearchChange,
+    handleReplaceChange,
+    handleReplace,
+    handleSearch,
+    keepText,
     convertToSentenceCase,
     convertToCapitalizedCase,
     convertToTitleCase,
@@ -31,55 +42,12 @@ const CaseConvert = () => {
     removeExtraSpaces,
     removeAllSpaces,
     removeEnter,
-    setInputText,
-    setOutputText
+    setInputText
   } = useCaseConvert()
-
-  const [searchText, setSearchText] = useState('')
-  const [replaceText, setReplaceText] = useState('')
-  const [highlightedText, setHighlightedText] = useState('')
-
-  const handleFileContent = (content) => {
-    setInputText(content)
-  }
-
-  const clearInput = () => {
-    setInputText('')
-    setOutputText('')
-    setSearchText('')
-    setReplaceText('')
-    setHighlightedText('')
-  }
-
-  const handleSearchChange = (e) => {
-    setSearchText(e.target.value)
-  }
-
-  const handleReplaceChange = (e) => {
-    setReplaceText(e.target.value)
-  }
-
-  const handleReplace = () => {
-    const replacedText = inputText.replace(
-      new RegExp(searchText, 'g'),
-      replaceText
-    )
-    setOutputText(replacedText)
-    setHighlightedText('') // Clear highlighting after replace
-  }
-
-  const handleSearch = () => {
-    if (searchText) {
-      const regex = new RegExp(`(${searchText})`, 'gi')
-      const highlighted = inputText.replace(regex, '<mark>$1</mark>')
-      setHighlightedText(highlighted)
-    } else {
-      setHighlightedText(inputText)
-    }
-  }
 
   return (
     <>
+      <SEO />
       <article>
         {/* Tool Area Starts */}
         <div className="mt-4 p-4">
@@ -90,10 +58,7 @@ const CaseConvert = () => {
           <div className="card w-full bg-base-200/30 p-4 shadow-xl">
             <div className="card">
               <div className="card-content space-y-4">
-                {/* --------- */}
                 {/* Main Area */}
-                {/* --------- */}
-
                 <div className="flex flex-col gap-4 md:flex-row">
                   <div className="flex-1">
                     <textarea
@@ -101,7 +66,7 @@ const CaseConvert = () => {
                       placeholder="Enter your text here..."
                       value={inputText}
                       onChange={handleInputChange}
-                      style={{ display: 'none' }} // Hide the textarea
+                      style={{ display: 'none' }}
                     ></textarea>
                     <div
                       className="textarea textarea-bordered h-48 w-full p-4"
@@ -124,7 +89,6 @@ const CaseConvert = () => {
                       value={searchText}
                       onChange={handleSearchChange}
                     />
-
                     <button
                       className="btn btn-primary join-item"
                       onClick={handleSearch}
@@ -141,7 +105,6 @@ const CaseConvert = () => {
                       value={replaceText}
                       onChange={handleReplaceChange}
                     />
-
                     <button
                       className="btn btn-primary join-item"
                       onClick={handleReplace}
@@ -151,11 +114,7 @@ const CaseConvert = () => {
                   </div>
                 </div>
 
-                {/* --------- */}
-                {/* Main Ends */}
-                {/* --------- */}
-
-                {/* Main Button Start */}
+                {/* Main Button Area */}
                 <Buttons
                   convertToSentenceCase={convertToSentenceCase}
                   convertToCapitalizedCase={convertToCapitalizedCase}
@@ -168,9 +127,10 @@ const CaseConvert = () => {
                   removeExtraSpaces={removeExtraSpaces}
                   removeAllSpaces={removeAllSpaces}
                   removeEnter={removeEnter}
+                  keepText={keepText}
                 />
-                {/* Main Button End */}
-                {/* Button Toolbar Start */}
+
+                {/* Button Toolbar */}
                 <div
                   className="my-2 flex items-center space-x-1"
                   role="toolbar"
@@ -181,20 +141,18 @@ const CaseConvert = () => {
                   <SaveFile formats={['txt']} content={outputText} />
                   <Clear onClear={clearInput} />
                 </div>
-                {/* Button Toolbar End */}
               </div>
             </div>
           </div>
         </div>
-        {/* Tool Area Ends */}
-        {/* Related Area Starts */}
+
+        {/* Related Area */}
         <div>
           <Related />
         </div>
-        {/* Related Area Ends */}
-        {/* Information Area Starts */}
 
-        {/* Information Area Ends */}
+        {/* Information Area */}
+        <Article />
       </article>
     </>
   )
