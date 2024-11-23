@@ -1,4 +1,5 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
+import ReactGA from 'react-ga'
 import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 
 import About from './pages/About'
@@ -6,6 +7,9 @@ import CategoryPage from './pages/CategoryPage'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import routes from './utils/routes.json'
+
+const TRACKING_ID = 'G-6CS85B5JEC' // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID)
 
 // Define a mapping of all components using import.meta.glob
 const componentModules = import.meta.glob('./Tools/**/*.jsx', { eager: false })
@@ -57,6 +61,9 @@ const loadComponent = (category, component) => {
 }
 
 const RoutesIndex = () => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search)
+  }, [])
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -87,8 +94,8 @@ const RoutesIndex = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div className="flex min-h-screen items-center justify-center">
-                          <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-primary"></div>
+                        <div className="flex justify-center items-center min-h-screen">
+                          <div className="border-primary border-b-2 rounded-full w-32 h-32 animate-spin"></div>
                         </div>
                       }
                     >
