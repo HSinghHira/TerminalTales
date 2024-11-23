@@ -47,6 +47,7 @@ export default {
           '--navbar-padding': '.5rem',
           '--border-btn': '1px'
         },
+
         light: {
           primary: '#5a7c65',
           'primary-focus': '#48604f',

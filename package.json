@@ -9,6 +9,7 @@
     "build": "vite build && node src/utils/generateRoutes.js",
     "lint": "eslint .",
     "routes": "node src/utils/generateRoutes.js",
+    "sitemap": "node src/utils/generateSitemap.js",
     "fav": "node src/hooks/favicon.js",
     "preview": "vite preview"
   },

@@ -18,12 +18,12 @@ const Buttons = ({
   return (
     <div className="space-y-4">
       <div
-        className="my-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+        className="gap-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 my-2"
         role="toolbar"
         aria-label="Settings toolbar"
       >
         <button className="btn btn-secondary" onClick={keepText}>
-          <Lock className="h-4 w-4" /> Keep Text
+          <Lock className="w-4 h-4" /> Keep Text
         </button>
         <button className="btn btn-primary" onClick={convertToSentenceCase}>
           Sentence Case
