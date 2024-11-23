@@ -5,12 +5,11 @@
   "type": "module",
   "homepage": "http://www.terminaltales.com",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite && node src/utils/generateRoutes.js && node src/utils/generateSitemap.js",
     "build": "vite build && node src/utils/generateRoutes.js",
     "lint": "eslint .",
-    "routes": "node src/utils/generateRoutes.js",
+    "routes": "node src/utils/generateRoutes.js && node src/utils/generateSitemap.js",
     "sitemap": "node src/utils/generateSitemap.js",
-    "fav": "node src/hooks/favicon.js",
     "preview": "vite preview"
   },
   "dependencies": {
