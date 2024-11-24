@@ -4,59 +4,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta name="twitter:site" content="@HSinghHira" />
-  <meta name="Twitter:Creator" content="@HSinghHira" />
-
-  <link rel="icon" type="image/svg+xml" href="./favicon/light/favicon.svg" media="(prefers-color-scheme: dark)" />
-  <link rel="shortcut icon" href="./favicon/light/favicon.ico" media="(prefers-color-scheme: dark)" />
-
-  <link rel="icon" type="image/svg+xml" href="./favicon/dark/favicon.svg" media="(prefers-color-scheme: light)" />
-  <link rel="shortcut icon" href="./favicon/dark/favicon.ico" media="(prefers-color-scheme: light)" />
-
-  <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="TTales" />
-  <link rel="manifest" href="./favicon/site.webmanifest" />
-
-  <meta name="google-site-verification" content="5bqd2gCHxETtqK5-1sEjRhNBy1iGn66Pqv-29UUvXjU" />
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6CS85B5JEC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || []
-    function gtag() {
-      dataLayer.push(arguments)
-    }
-    gtag('js', new Date())
-
-    gtag('config', 'G-6CS85B5JEC')
-  </script>
-  <script type="module" crossorigin src="./assets/index-BH7ooaYq.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/tools-html-tools-CSsjWULY.js">
-  <link rel="stylesheet" crossorigin href="./assets/index-DlAM0fNa.css">
+  <script type="module" crossorigin src="./assets/index.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/external-utils.js">
+  <link rel="modulepreload" crossorigin href="./assets/framework-main.js">
+  <link rel="modulepreload" crossorigin href="./assets/navigation.js">
+  <link rel="modulepreload" crossorigin href="./assets/ui-components.js">
+  <link rel="modulepreload" crossorigin href="./assets/components.js">
+  <link rel="modulepreload" crossorigin href="./assets/tools-html.js">
+  <link rel="modulepreload" crossorigin href="./assets/pages.js">
+  <link rel="stylesheet" crossorigin href="./assets/index.css">
 </head>
 
 <body>
   <div id="root"></div>
 
   <script type="text/javascript">
-      ; (function (l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search
-            .slice(1)
-            .split('&')
-            .map(function (s) {
-              return s.replace(/~and~/g, '&')
-            })
-            .join('?')
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          )
-        }
-      })(window.location)
+    ; (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search
+          .slice(1)
+          .split('&')
+          .map(function (s) {
+            return s.replace(/~and~/g, '&')
+          })
+          .join('?')
+        window.history.replaceState(
+          null,
+          null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        )
+      }
+    })(window.location)
   </script>
 </body>
 
