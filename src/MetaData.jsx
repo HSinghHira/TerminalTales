@@ -116,13 +116,62 @@ const MetaData = () => {
       {imageUrl && <meta name="twitter:image" content={imageUrl} />}{' '}
       {/* Add Twitter image only if it exists */}
       <meta name="twitter:creator" content="@HSinghHira" />{' '}
+      <meta name="twitter:site" content="@HSinghHira" />
       {/* Replace with your Twitter handle */}
       <meta name="twitter:url" content={currentUrl} />
       <meta name="twitter:domain" content={window.location.host} />
       {/* Additional Meta Tags */}
       <meta name="robots" content="index, follow" />
+      <link
+        rel="icon"
+        type="image/svg+xml"
+        href="./favicon/light/favicon.svg"
+        media="(prefers-color-scheme: dark)"
+      />
+      <link
+        rel="shortcut icon"
+        href="./favicon/light/favicon.ico"
+        media="(prefers-color-scheme: dark)"
+      />
+      <link
+        rel="icon"
+        type="image/svg+xml"
+        href="./favicon/dark/favicon.svg"
+        media="(prefers-color-scheme: light)"
+      />
+      <link
+        rel="shortcut icon"
+        href="./favicon/dark/favicon.ico"
+        media="(prefers-color-scheme: light)"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        href="./favicon/favicon-96x96.png"
+        sizes="96x96"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="./favicon/apple-touch-icon.png"
+      />
+      <meta name="apple-mobile-web-app-title" content="TTales" />
+      <link rel="manifest" href="./favicon/site.webmanifest" />
       {/* Schema Markup */}
       <script type="application/ld+json">{JSON.stringify(schemaMarkup)}</script>
+      {/* Google tag (gtag.js) */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-6CS85B5JEC"
+      ></script>
+      <script>
+        {`window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-6CS85B5JEC');`}
+      </script>
     </Helmet>
   )
 }
