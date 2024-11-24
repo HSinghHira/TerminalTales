@@ -70,44 +70,25 @@ const RoutesIndex = () => {
       <Route path="/about" element={<About />} />
       <Route path="*" element={<NotFound />} />
 
-      {routes.map((category) => {
-        if (!category?.category) {
-          console.error('Invalid category:', category)
-          return null
-        }
-
-        return (
-          <React.Fragment key={category.urlPath}>
-            <Route path={`/${category.urlPath}`} element={<CategoryPage />} />
-            {category.projects.map((project) => {
-              if (!project?.name) {
-                console.error('Invalid project:', project)
-                return null
-              }
-
-              const Component = loadComponent(category.category, project.name)
-
-              return (
-                <Route
-                  key={project.path}
-                  path={project.path}
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="flex justify-center items-center min-h-screen">
-                          <div className="border-primary border-b-2 rounded-full w-32 h-32 animate-spin"></div>
-                        </div>
-                      }
-                    >
-                      <Component />
-                    </Suspense>
-                  }
-                />
-              )
-            })}
-          </React.Fragment>
-        )
-      })}
+      {routes.map((category) => (
+        <React.Fragment key={category.urlPath}>
+          <Route path={`/${category.urlPath}`} element={<CategoryPage />} />
+          {category.projects.map((project) => {
+            const Component = loadComponent(category.category, project.name)
+            return (
+              <Route
+                key={project.path}
+                path={`/${category.urlPath}/:projectSlug`}
+                element={
+                  <Suspense fallback={<div>Loading...</div>}>
+                    <Component />
+                  </Suspense>
+                }
+              />
+            )
+          })}
+        </React.Fragment>
+      ))}
     </Routes>
   )
 }

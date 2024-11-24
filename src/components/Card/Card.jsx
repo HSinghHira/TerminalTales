@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Card = ({ project, Icon }) => {
   return (
-    <div className="card w-full bg-base-200/30 shadow-xl">
+    <div className="bg-base-200/30 shadow-xl w-full card">
       <div className="card-body">
         <h3 className="card-title">
           {Icon ? (
@@ -18,7 +18,7 @@ const Card = ({ project, Icon }) => {
           {project.name}
         </h3>
         {project.description && <p>{project.description}</p>}
-        <div className="card-actions justify-end">
+        <div className="justify-end card-actions">
           <Link to={project.path} className="btn btn-primary">
             {project.buttonText || 'Try Now'}
           </Link>

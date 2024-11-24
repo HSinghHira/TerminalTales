@@ -117,6 +117,7 @@ function generateRoutes(dir) {
           description: description,
           toolicon: toolicon,
           path: `/${urlSafeCategory}/${urlSafeProject}`,
+          image: `/${urlSafeCategory}/${urlSafeProject}.png`,
           fileName: normalizedPath
         })
       })

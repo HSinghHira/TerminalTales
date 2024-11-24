@@ -8,7 +8,6 @@ import SaveFile from '../../../components/Buttons/SaveFile'
 import Related from '../../../components/Related/Related'
 import Article from './Article'
 import Buttons from './Buttons'
-import SEO from './SEO'
 import { useCaseConvert } from './datascript'
 
 const Description =
@@ -47,29 +46,28 @@ const CaseConvert = () => {
 
   return (
     <>
-      <SEO />
       <article>
         {/* Tool Area Starts */}
         <div className="mt-4 p-4">
-          <h2 className="flex items-center mb-4 font-semibold text-2xl">
+          <h2 className="mb-4 flex items-center text-2xl font-semibold">
             <Hash className="mr-2 duration-300 hover:rotate-12" size={30} />
             Case Convertor
           </h2>
-          <div className="bg-base-200/30 shadow-xl p-4 w-full card">
+          <div className="card w-full bg-base-200/30 p-4 shadow-xl">
             <div className="card">
-              <div className="space-y-4 card-content">
+              <div className="card-content space-y-4">
                 {/* Main Area */}
-                <div className="flex md:flex-row flex-col gap-4">
+                <div className="flex flex-col gap-4 md:flex-row">
                   <div className="flex-1">
                     <textarea
-                      className="textarea-bordered w-full h-48 textarea"
+                      className="textarea textarea-bordered h-48 w-full"
                       placeholder="Enter your text here..."
                       value={inputText}
                       onChange={handleInputChange}
                       style={{ display: 'none' }}
                     ></textarea>
                     <div
-                      className="p-4 textarea-bordered max-w-full h-48 break-all overflow-auto textarea"
+                      className="textarea textarea-bordered h-48 max-w-full overflow-auto break-all p-4"
                       dangerouslySetInnerHTML={{
                         __html: highlightedText || outputText || inputText
                       }}
@@ -79,11 +77,11 @@ const CaseConvert = () => {
                   </div>
                 </div>
 
-                <div className="flex 2xl:flex-row flex-col justify-between space-y-2 2xl:space-y-0">
-                  <div className="flex sm:flex-row flex-col sm:space-x-2 space-y-2 sm:space-y-0">
-                    <div className="flex-1 join">
+                <div className="flex flex-col justify-between space-y-2 2xl:flex-row 2xl:space-y-0">
+                  <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
+                    <div className="join flex-1">
                       <input
-                        className="input-bordered rounded-l-lg w-full input join-item focus:outline-none"
+                        className="input join-item input-bordered w-full rounded-l-lg focus:outline-none"
                         type="text"
                         placeholder="Search"
                         value={searchText}
@@ -93,13 +91,13 @@ const CaseConvert = () => {
                         className="btn btn-primary join-item"
                         onClick={handleSearch}
                       >
-                        <Search className="w-5 h-5" />
+                        <Search className="h-5 w-5" />
                       </button>
                     </div>
 
-                    <div className="flex-1 join">
+                    <div className="join flex-1">
                       <input
-                        className="input-bordered rounded-l-lg w-full input join-item focus:outline-none"
+                        className="input join-item input-bordered w-full rounded-l-lg focus:outline-none"
                         type="text"
                         placeholder="Replace with"
                         value={replaceText}
@@ -109,20 +107,20 @@ const CaseConvert = () => {
                         className="btn btn-primary join-item"
                         onClick={handleReplace}
                       >
-                        <Replace className="w-5 h-5" />
+                        <Replace className="h-5 w-5" />
                       </button>
                     </div>
 
                     <button
-                      className="flex-shrink-0 btn btn-secondary md:btn-wide"
+                      className="btn btn-secondary flex-shrink-0 md:btn-wide"
                       onClick={keepText}
                     >
-                      <Lock className="w-4 h-4" /> Keep Text
+                      <Lock className="h-4 w-4" /> Keep Text
                     </button>
                   </div>
 
                   <div
-                    className="flex flex-wrap items-center space-x-1 mt-2"
+                    className="mt-2 flex flex-wrap items-center space-x-1"
                     role="toolbar"
                     aria-label="Settings toolbar"
                   >

@@ -10,6 +10,7 @@
         "description": "Minify HTML code effortlessly Reduce file size, improve page load times, and boost website performance.",
         "toolicon": "Code",
         "path": "/html-tools/html-minify",
+        "image": "/html-tools/html-minify.png",
         "fileName": "HTML-Minify/index.jsx"
       }
     ]
@@ -22,9 +23,10 @@
       {
         "name": "Case Converter",
         "displayName": "Case Converter",
-        "description": "Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, aLtErNaTiNg cAsE, and more with our online Case Converter.",
+        "description": "Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, aLtErNaTiNg cAsE, and much more.",
         "toolicon": "ALargeSmall",
         "path": "/text-tools/case-converter",
+        "image": "/text-tools/case-converter.png",
         "fileName": "Case-Converter/index.jsx"
       }
     ]

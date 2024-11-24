@@ -1,13 +1,13 @@
 // index.jsx
 import { Eraser, Hammer, Hash } from 'lucide-react'
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 
+import MetaData from '../../../MetaData'
 import ChooseFile from '../../../components/Buttons/ChooseFile'
 import CopyButton from '../../../components/Buttons/Copy'
 import SaveFile from '../../../components/Buttons/SaveFile'
 import Related from '../../../components/Related/Related'
 import Article from './Article'
-import SEO from './SEO'
 import { minifyHTML } from './datascript'
 
 const Description =
@@ -61,7 +61,6 @@ const HTMLMinifier = () => {
 
   return (
     <>
-      <SEO />
       <article>
         {/* Tool Area Starts */}
         <div className="mt-4 p-4">
