@@ -5,13 +5,14 @@
   "type": "module",
   "homepage": "http://www.terminaltales.com",
   "scripts": {
-    "dev": "vite && node src/utils/generateRoutes.js && node src/utils/generateSitemap.js",
-    "build": "vite build && node src/utils/generateRoutes.js",
+    "dev": "npm run all && vite",
     "lint": "eslint .",
-    "routes": "node src/utils/generateRoutes.js && node src/utils/generateSitemap.js",
+    "routes": "node src/utils/generateRoutes.js",
     "sitemap": "node src/utils/generateSitemap.js",
     "img": "node src/utils/generateImages.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "all": "npm run routes && npm run img && npm run sitemap",
+    "build": "npm run all && vite build"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.15",
