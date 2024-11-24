@@ -23,7 +23,7 @@
       {
         "name": "Case Converter",
         "displayName": "Case Converter",
-        "description": "Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, aLtErNaTiNg cAsE, and much more.",
+        "description": "Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, etc.",
         "toolicon": "ALargeSmall",
         "path": "/text-tools/case-converter",
         "image": "/text-tools/case-converter.png",

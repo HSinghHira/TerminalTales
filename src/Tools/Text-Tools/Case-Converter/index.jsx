@@ -11,7 +11,7 @@ import Buttons from './Buttons'
 import { useCaseConvert } from './datascript'
 
 const Description =
-  'Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, aLtErNaTiNg cAsE, and much more.'
+  'Easily convert text between lower case, UPPER CASE, Sentence case, Capitalized Case, etc.'
 
 const ToolIcon = 'ALargeSmall'
 
