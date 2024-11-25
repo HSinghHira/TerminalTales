@@ -12,7 +12,8 @@
     "img": "node src/utils/generateImages.js",
     "preview": "vite preview",
     "all": "npm run routes && npm run img && npm run sitemap",
-    "build": "npm run all && vite build"
+    "build": "npm run all && vite build",
+    "publish": "git add . && git commit -m \"Latest version of build\" && git push"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.15",
