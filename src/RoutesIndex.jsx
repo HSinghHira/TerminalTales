@@ -1,5 +1,4 @@
-import React, { Suspense, useEffect } from 'react'
-import ReactGA from 'react-ga'
+import React, { Suspense } from 'react'
 import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 
 import About from './pages/About'
@@ -7,9 +6,6 @@ import CategoryPage from './pages/CategoryPage'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import routes from './utils/routes.json'
-
-const TRACKING_ID = 'G-6CS85B5JEC' // OUR_TRACKING_ID
-ReactGA.initialize(TRACKING_ID)
 
 // Define a mapping of all components using import.meta.glob
 const componentModules = import.meta.glob('./Tools/**/*.jsx', { eager: false })
@@ -61,34 +57,50 @@ const loadComponent = (category, component) => {
 }
 
 const RoutesIndex = () => {
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search)
-  }, [])
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="*" element={<NotFound />} />
 
-      {routes.map((category) => (
-        <React.Fragment key={category.urlPath}>
-          <Route path={`/${category.urlPath}`} element={<CategoryPage />} />
-          {category.projects.map((project) => {
-            const Component = loadComponent(category.category, project.name)
-            return (
-              <Route
-                key={project.path}
-                path={`/${category.urlPath}/:projectSlug`}
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <Component />
-                  </Suspense>
-                }
-              />
-            )
-          })}
-        </React.Fragment>
-      ))}
+      {routes.map((category) => {
+        if (!category?.category) {
+          console.error('Invalid category:', category)
+          return null
+        }
+
+        return (
+          <React.Fragment key={category.urlPath}>
+            <Route path={`/${category.urlPath}`} element={<CategoryPage />} />
+            {category.projects.map((project) => {
+              if (!project?.name) {
+                console.error('Invalid project:', project)
+                return null
+              }
+
+              const Component = loadComponent(category.category, project.name)
+
+              return (
+                <Route
+                  key={project.path}
+                  path={project.path}
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="flex min-h-screen items-center justify-center">
+                          <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-primary"></div>
+                        </div>
+                      }
+                    >
+                      <Component />
+                    </Suspense>
+                  }
+                />
+              )
+            })}
+          </React.Fragment>
+        )
+      })}
     </Routes>
   )
 }

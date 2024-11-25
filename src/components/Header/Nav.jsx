@@ -33,18 +33,18 @@ const Nav = ({ menuState, setMenuState, buttonNode }) => {
               </summary>
               <ul className="rounded-t-none bg-base-100 p-2">
                 <li>
-                  <a href="https://instagram.com/hsinghhira">
+                  <a target="_blank" href="https://instagram.com/hsinghhira">
                     <AiOutlineInstagram size={20} /> Instagram
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/HSinghHira">
+                  <a target="_blank" href="https://github.com/HSinghHira">
                     <AiOutlineGithub size={20} />
                     Github
                   </a>
                 </li>
                 <li>
-                  <a href="https://hsinghhira.bsky.social/">
+                  <a target="_blank" href="https://hsinghhira.bsky.social/">
                     <FaBluesky size={20} /> Bluesky
                   </a>
                 </li>

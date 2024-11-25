@@ -28,6 +28,15 @@
         "path": "/text-tools/case-converter",
         "image": "/text-tools/case-converter.png",
         "fileName": "Case-Converter/index.jsx"
+      },
+      {
+        "name": "Lorem Ipsum Generator",
+        "displayName": "Lorem Ipsum Generator",
+        "description": "Discover high-quality placeholder text for your design projects with this Lorem Ipsum generator.",
+        "toolicon": "TextSelect",
+        "path": "/text-tools/lorem-ipsum-generator",
+        "image": "/text-tools/lorem-ipsum-generator.png",
+        "fileName": "Lorem-Ipsum-Generator/index.jsx"
       }
     ]
   }
